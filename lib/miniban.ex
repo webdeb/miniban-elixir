@@ -15,8 +15,17 @@ defmodule Miniban do
 
   @doc """
     Validate an IBAN
+
+    ## Examples
+
+      iex> Miniban.is_valid_iban?("MD75EX0900002374642125EU")
+      true
+
+      iex> Miniban.is_valid_iban?("")
+      false
+
   """
-  def is_valid_iban?(input) do
+  def is_valid_iban?(input) when is_binary(input) do
     { prefix, rest } = String.replace(input, ~r/ +/, "")
       |> String.upcase()
       |> String.split_at(4)
@@ -28,4 +37,5 @@ defmodule Miniban do
       |> String.to_integer()
       |> rem(97)
   end
+  def is_valid_iban?(_), do: false
 end

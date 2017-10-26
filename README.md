@@ -1,6 +1,10 @@
 # Miniban
 
-**TODO: Add description**
+## Simple and fast IBAN validation 
+
+```
+Miniban.is_iban_valid?(iban) # -> true / false
+```
 
 ## Installation
 
